@@ -7,16 +7,21 @@ import solutions.Solution;
  * obtain a mapping of a solution (n-dimensional array of elements of generic
  * type E (domain)) to a Double (image). It is a useful representation of an
  * objective function for an optimization problem.
- * 
+ *
  * @author ccavellucci, fusberti
  * @param <E>
  */
 public interface Evaluator<E> {
 
+	public abstract int getCurrentWeight();
+	public abstract int getMaxWeight();
+
+	public abstract int[] getWeights();
+
 	/**
 	 * Gives the size of the problem domain. Typically this is the number of
 	 * decision variables of an optimization problem.
-	 * 
+	 *
 	 * @return the size of the problem domain.
 	 */
 	public abstract Integer getDomainSize();
@@ -24,7 +29,7 @@ public interface Evaluator<E> {
 	/**
 	 * The evaluating function is responsible for returning the mapping value of
 	 * a solution.
-	 * 
+	 *
 	 * @param sol
 	 *            the solution under evaluation.
 	 * @return the evaluation of a solution.
@@ -34,7 +39,7 @@ public interface Evaluator<E> {
 	/**
 	 * Evaluates the cost variation of inserting an element into a solution
 	 * according to an objective function.
-	 * 
+	 *
 	 * @param elem
 	 *            the element under consideration for insertion.
 	 * @param sol
@@ -48,7 +53,7 @@ public interface Evaluator<E> {
 	/**
 	 * Evaluates the cost variation of removing an element into a solution
 	 * according to an objective function.
-	 * 
+	 *
 	 * @param elem
 	 *            the element under consideration for removal.
 	 * @param sol
@@ -63,7 +68,7 @@ public interface Evaluator<E> {
 	 * Evaluates the cost variation of exchanging candidates, one being
 	 * considered to enter the solution (elemIn) and the other being considered
 	 * for removal (elemOut).
-	 * 
+	 *
 	 * @param elemIn
 	 *            the element under consideration for insertion.
 	 * @param elemOut
