@@ -175,6 +175,63 @@ public class GRASP_QBF extends AbstractGRASP<Integer> {
 		}
 		return null;
 	}
+	
+	//LOCALSEARCH FIRSTIMPROVE
+	/*@Override
+	public Solution<Integer> localSearch() {
+		int[] pesos = ObjFunction.getWeights();
+		int pesoAtual = ObjFunction.getCurrentWeight();
+		int maxPeso = ObjFunction.getMaxWeight();
+		
+		var lasVariables = ObjFunction.getVariables();
+		
+		ArrayList<Integer> candidatosDisps = new ArrayList<Integer>();
+		
+		for (int i = 0; i < ObjFunction.getDomainSize(); i++) {
+			if(lasVariables[i] == 0.0)
+				candidatosDisps.add(i);
+		}
+		
+		
+		Double minDeltaCost = Double.POSITIVE_INFINITY;
+		Integer bestCandIn = null, bestCandOut = null;
+		
+		
+		for (Integer candOut : sol) {
+			int pesoSaida = pesos[candOut];
+			int pesoMaxPossivel = maxPeso - pesoAtual - pesoSaida;
+			for(int candIn : candidatosDisps) {
+				if(pesos[candIn] <= pesoMaxPossivel) {
+					double deltaCost = ObjFunction.evaluateExchangeCost(candIn, candOut, sol);
+					if (deltaCost < minDeltaCost) {
+						sol.add(bestCandIn);
+						CL.add(bestCandOut);
+						sol.remove(bestCandOut);
+						CL.remove(bestCandIn);
+						ObjFunction.evaluate(sol);
+						return null;
+					}
+				}
+			}
+		}
+		
+		// Evaluate removals
+		for (Integer candOut : sol) {
+			double deltaCost = ObjFunction.evaluateRemovalCost(candOut, sol);
+			if (deltaCost < minDeltaCost) {
+				sol.remove(bestCandOut);
+				CL.add(bestCandOut);
+				ObjFunction.evaluate(sol);
+				return null;
+			}
+		}
+		
+		return null;
+	}*/
+	
+	
+	
+	
 
 	/**
 	 * A main method used for testing the GRASP metaheuristic.
