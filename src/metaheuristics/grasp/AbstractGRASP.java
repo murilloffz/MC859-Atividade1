@@ -4,6 +4,7 @@
 package metaheuristics.grasp;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 import problems.Evaluator;
@@ -142,7 +143,6 @@ public abstract class AbstractGRASP<E> {
 	 * @return A feasible solution to the problem being minimized.
 	 */
 	public Solution<E> constructiveHeuristic() {
-
 		CL = makeCL();
 		RCL = makeRCL();
 		sol = createEmptySol();
@@ -179,13 +179,14 @@ public abstract class AbstractGRASP<E> {
 			}
 
 			/* Choose a candidate randomly from the RCL */
-			int rndIndex = rng.nextInt(RCL.size());
-			E inCand = RCL.get(rndIndex);
-			CL.remove(inCand);
-			sol.add(inCand);
-			ObjFunction.evaluate(sol);
-			RCL.clear();
-
+			if(RCL.size() > 0) {
+				int rndIndex = rng.nextInt(RCL.size());
+				E inCand = RCL.get(rndIndex);
+				CL.remove(inCand);
+				sol.add(inCand);
+				ObjFunction.evaluate(sol);
+				RCL.clear();
+			}
 		}
 
 		return sol;
@@ -199,18 +200,31 @@ public abstract class AbstractGRASP<E> {
 	 * @return The best feasible solution obtained throughout all iterations.
 	 */
 	public Solution<E> solve() {
-
+		long startTime = System.currentTimeMillis();
+		long endTime = startTime + iterations;
+		
 		bestSol = createEmptySol();
-		for (int i = 0; i < iterations; i++) {
+		for (int i = 0; true; i++) {
+			if(System.currentTimeMillis() > endTime)
+				break;
 			constructiveHeuristic();
 			localSearch();
+			//System.out.println("Iteracao: "+i);
 			if (bestSol.cost > sol.cost) {
 				bestSol = new Solution<E>(sol);
-				if (verbose)
+				if (verbose) {
+					int pesoTotal = 0;
+					int[] pesos = ObjFunction.getWeights();
+					Iterator<E> iterator = bestSol.iterator();
+					while (iterator.hasNext()) {
+						Integer valor = (Integer) iterator.next();
+						pesoTotal += pesos[valor];
+					}
 					System.out.println("(Iter. " + i + ") BestSol = " + bestSol);
+					System.out.println("Peso: "+pesoTotal);
+				}
 			}
 		}
-
 		return bestSol;
 	}
 

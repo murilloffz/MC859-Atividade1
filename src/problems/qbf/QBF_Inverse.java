@@ -21,7 +21,7 @@ public class QBF_Inverse extends QBF {
 	 *             Necessary for I/O operations.
 	 */
 	public QBF_Inverse(String filename) throws IOException {
-		super(filename);
+ 		super(filename);
 	}
 
 

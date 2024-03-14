@@ -15,11 +15,11 @@ import solutions.Solution;
  * a QBF can be expressed as f(x) = x'.A.x 
  * The problem of minimizing a QBF is NP-hard [1], even when no constraints
  * are considered.
- *
+ * 
  * [1] Kochenberger, et al. The unconstrained binary quadratic programming
  * problem: a survey. J Comb Optim (2014) 28:58–81. DOI
  * 10.1007/s10878-014-9734-0.
- *
+ * 
  * @author ccavellucci, fusberti
  *
  */
@@ -34,14 +34,14 @@ public class QBF implements Evaluator<Integer> {
 	 * The array of numbers representing the domain.
 	 */
 	public final Double[] variables;
-
+	
 	/**
 	 * The array of numbers representing the domain.
 	 */
 	public int[] weights;
-
+	
 	public int maxWeight;
-
+		
 
 	/**
 	 * The matrix A of coefficients for the QBF f(x) = x'.A.x
@@ -52,7 +52,7 @@ public class QBF implements Evaluator<Integer> {
 	 * The constructor for QuadracticBinaryFunction class. The filename of the
 	 * input for setting matrix of coefficients A of the QBF. The dimension of
 	 * the array of variables x is returned from the {@link #readInput} method.
-	 *
+	 * 
 	 * @param filename
 	 *            Name of the file containing the input for setting the QBF.
 	 * @throws IOException
@@ -66,7 +66,7 @@ public class QBF implements Evaluator<Integer> {
 	/**
 	 * Evaluates the value of a solution by transforming it into a vector. This
 	 * is required to perform the matrix multiplication which defines a QBF.
-	 *
+	 * 
 	 * @param sol
 	 *            the solution which will be evaluated.
 	 */
@@ -83,7 +83,7 @@ public class QBF implements Evaluator<Integer> {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see problems.Evaluator#getDomainSize()
 	 */
 	@Override
@@ -97,7 +97,7 @@ public class QBF implements Evaluator<Integer> {
 	 * function when at most two variables are modified is given by methods
 	 * {@link #evaluateInsertionQBF(int)}, {@link #evaluateRemovalQBF(int)} and
 	 * {@link #evaluateExchangeQBF(int,int)}.
-	 *
+	 * 
 	 * @return The evaluation of the QBF.
 	 */
 	@Override
@@ -111,7 +111,7 @@ public class QBF implements Evaluator<Integer> {
 	/**
 	 * Evaluates a QBF by calculating the matrix multiplication that defines the
 	 * QBF: f(x) = x'.A.x .
-	 *
+	 * 
 	 * @return The value of the QBF.
 	 */
 	public Double evaluateQBF() {
@@ -120,7 +120,7 @@ public class QBF implements Evaluator<Integer> {
 		Double vecAux[] = new Double[size];
 
 		int pesoTotal = 0;
-
+		
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 				aux += variables[j] * A[i][j];
@@ -130,7 +130,7 @@ public class QBF implements Evaluator<Integer> {
 			if(variables[i] > 0) {
 				pesoTotal += weights[i];
 			}
-
+			
 			aux = (double) 0;
 		}
 		return sum;
@@ -139,7 +139,7 @@ public class QBF implements Evaluator<Integer> {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see problems.Evaluator#evaluateInsertionCost(java.lang.Object,
 	 * solutions.Solution)
 	 */
@@ -154,7 +154,7 @@ public class QBF implements Evaluator<Integer> {
 	/**
 	 * Determines the contribution to the QBF objective function from the
 	 * insertion of an element.
-	 *
+	 * 
 	 * @param i
 	 *            Index of the element being inserted into the solution.
 	 * @return Ihe variation of the objective function resulting from the
@@ -170,7 +170,7 @@ public class QBF implements Evaluator<Integer> {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see problems.Evaluator#evaluateRemovalCost(java.lang.Object,
 	 * solutions.Solution)
 	 */
@@ -185,7 +185,7 @@ public class QBF implements Evaluator<Integer> {
 	/**
 	 * Determines the contribution to the QBF objective function from the
 	 * removal of an element.
-	 *
+	 * 
 	 * @param i
 	 *            Index of the element being removed from the solution.
 	 * @return The variation of the objective function resulting from the
@@ -202,7 +202,7 @@ public class QBF implements Evaluator<Integer> {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see problems.Evaluator#evaluateExchangeCost(java.lang.Object,
 	 * java.lang.Object, solutions.Solution)
 	 */
@@ -217,7 +217,7 @@ public class QBF implements Evaluator<Integer> {
 	/**
 	 * Determines the contribution to the QBF objective function from the
 	 * exchange of two elements one belonging to the solution and the other not.
-	 *
+	 * 
 	 * @param in
 	 *            The index of the element that is considered entering the
 	 *            solution.
@@ -253,7 +253,7 @@ public class QBF implements Evaluator<Integer> {
 	 * solution. This method is different from {@link #evaluateInsertionQBF(int)},
 	 * since it disregards the fact that the element might already be in the
 	 * solution.
-	 *
+	 * 
 	 * @param i
 	 *            index of the element being inserted into the solution.
 	 * @return the variation of the objective function resulting from the
@@ -276,7 +276,7 @@ public class QBF implements Evaluator<Integer> {
 	 * Responsible for setting the QBF function parameters by reading the
 	 * necessary input from an external file. this method reads the domain's
 	 * dimension and matrix {@link #A}.
-	 *
+	 * 
 	 * @param filename
 	 *            Name of the file containing the input for setting the black
 	 *            box function.
@@ -299,17 +299,17 @@ public class QBF implements Evaluator<Integer> {
 		stok.nextToken();
 		maxWeight = (int) stok.nval;
 		A = new Double[_size][_size];
-
+		
 		for(int i = 0; i < _size; i++) {
 			stok.nextToken();
 			weights[i] = (int) stok.nval;
 		}
-
+		
 		for(int i = 0; i < _size; i++) {
 			stok.nextToken();
 			A[0][i] = stok.nval;
 		}
-
+		
 
 		for (int i = 1; i < _size; i++) {
 			A[i][0] = 0.0;
@@ -328,15 +328,15 @@ public class QBF implements Evaluator<Integer> {
 	/**
 	 * Reserving the required memory for storing the values of the domain
 	 * variables.
-	 *
+	 * 
 	 * @return a pointer to the array of domain variables.
 	 */
 	protected Double[] allocateVariables() {
 		Double[] _variables = new Double[size];
 		return _variables;
 	}
-
-
+	
+	
 	/**
 	 * Reset the domain variables to their default values.
 	 */
@@ -360,7 +360,7 @@ public class QBF implements Evaluator<Integer> {
 
 	/**
 	 * A main method for testing the QBF class.
-	 *
+	 * 
 	 * @param args
 	 * @throws IOException
 	 */
@@ -369,7 +369,7 @@ public class QBF implements Evaluator<Integer> {
 		QBF qbf = new QBF("instances/kqbf/kqbf020");
 		qbf.printMatrix();
 		Double maxVal = Double.NEGATIVE_INFINITY;
-
+		
 		// evaluates randomly generated values for the domain, saving the best
 		// one.
 		for (int i = 0; i < 5; i++) {
@@ -401,14 +401,16 @@ public class QBF implements Evaluator<Integer> {
 		}
 		System.out.println("x = " + Arrays.toString(qbf.variables));
 		System.out.println("f(x) = " + qbf.evaluateQBF());
+		
+		
 
 	}
 
 	@Override
 	public int getCurrentWeight() {
-
+		
 		int currWeight = 0;
-
+		
 		for(int i = 0; i < size; i++) {
 			if(variables[i] == 1.0)
 				currWeight += weights[i];
@@ -425,4 +427,10 @@ public class QBF implements Evaluator<Integer> {
 	public int[] getWeights() {
 		return weights;
 	}
+	
+	public Double[] getVariables() {
+		return variables.clone();
+	}
+	
+
 }

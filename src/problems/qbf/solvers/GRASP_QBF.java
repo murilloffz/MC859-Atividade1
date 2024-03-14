@@ -1,7 +1,7 @@
 package problems.qbf.solvers;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.*;
 
 import metaheuristics.grasp.AbstractGRASP;
 import problems.qbf.QBF_Inverse;
@@ -45,7 +45,7 @@ public class GRASP_QBF extends AbstractGRASP<Integer> {
 	 */
 	@Override
 	public ArrayList<Integer> makeCL() {
-
+		
 		ArrayList<Integer> _CL = new ArrayList<Integer>();
 		for (int i = 0; i < ObjFunction.getDomainSize(); i++) {
 			Integer cand = i;
@@ -77,7 +77,19 @@ public class GRASP_QBF extends AbstractGRASP<Integer> {
 	 */
 	@Override
 	public void updateCL() {
-
+		ObjFunction.getDomainSize();
+		int[] pesos = ObjFunction.getWeights();
+		int pesoAtual = ObjFunction.getCurrentWeight();
+		int maxPeso = ObjFunction.getMaxWeight();
+		
+        Iterator<Integer> iterator = CL.iterator();
+        while (iterator.hasNext()) {
+            Integer valor = iterator.next();
+            if (pesos[valor] + pesoAtual > maxPeso) {
+                iterator.remove();
+            }
+        }
+		
 		// do nothing since all elements off the solution are viable candidates.
 
 	}
@@ -104,35 +116,39 @@ public class GRASP_QBF extends AbstractGRASP<Integer> {
 	 */
 	@Override
 	public Solution<Integer> localSearch() {
-
-		Double minDeltaCost;
+		int[] pesos = ObjFunction.getWeights();
+		int pesoAtual = ObjFunction.getCurrentWeight();
+		int maxPeso = ObjFunction.getMaxWeight();
+		
+		var lasVariables = ObjFunction.getVariables();
+		
+		ArrayList<Integer> candidatosDisps = new ArrayList<Integer>();
+		
+		for (int i = 0; i < ObjFunction.getDomainSize(); i++) {
+			if(lasVariables[i] == 0.0)
+				candidatosDisps.add(i);
+		}
+		
+		
+		Double minDeltaCost = Double.POSITIVE_INFINITY;
 		Integer bestCandIn = null, bestCandOut = null;
-
-		do {
-			minDeltaCost = Double.POSITIVE_INFINITY;
-			updateCL();
-				
-			// Evaluate insertions
-			for (Integer candIn : CL) {
-				double deltaCost = ObjFunction.evaluateInsertionCost(candIn, sol);
-				if (deltaCost < minDeltaCost) {
-					minDeltaCost = deltaCost;
-					bestCandIn = candIn;
-					bestCandOut = null;
-				}
+		
+		
+		// Evaluate removals
+		for (Integer candOut : sol) {
+			double deltaCost = ObjFunction.evaluateRemovalCost(candOut, sol);
+			if (deltaCost < minDeltaCost) {
+				minDeltaCost = deltaCost;
+				bestCandIn = null;
+				bestCandOut = candOut;
 			}
-			// Evaluate removals
-			for (Integer candOut : sol) {
-				double deltaCost = ObjFunction.evaluateRemovalCost(candOut, sol);
-				if (deltaCost < minDeltaCost) {
-					minDeltaCost = deltaCost;
-					bestCandIn = null;
-					bestCandOut = candOut;
-				}
-			}
-			// Evaluate exchanges
-			for (Integer candIn : CL) {
-				for (Integer candOut : sol) {
+		}
+		
+		for (Integer candOut : sol) {
+			int pesoSaida = pesos[candOut];
+			int pesoMaxPossivel = maxPeso - pesoAtual - pesoSaida;
+			for(Integer candIn : candidatosDisps) {
+				if(pesos[candIn] <= pesoMaxPossivel) {
 					double deltaCost = ObjFunction.evaluateExchangeCost(candIn, candOut, sol);
 					if (deltaCost < minDeltaCost) {
 						minDeltaCost = deltaCost;
@@ -141,20 +157,22 @@ public class GRASP_QBF extends AbstractGRASP<Integer> {
 					}
 				}
 			}
-			// Implement the best move, if it reduces the solution cost.
-			if (minDeltaCost < -Double.MIN_VALUE) {
-				if (bestCandOut != null) {
-					sol.remove(bestCandOut);
-					CL.add(bestCandOut);
-				}
-				if (bestCandIn != null) {
-					sol.add(bestCandIn);
-					CL.remove(bestCandIn);
-				}
-				ObjFunction.evaluate(sol);
+		}
+		
+		// Implement the best move, if it reduces the solution cost.
+		if (minDeltaCost < -Double.MIN_VALUE) {
+			if (bestCandOut != null) {
+				//System.out.println("Estou tirando o "+bestCandOut);
+				sol.remove(bestCandOut);
+				CL.add(bestCandOut);
 			}
-		} while (minDeltaCost < -Double.MIN_VALUE);
-
+			if (bestCandIn != null) {
+				//System.out.println("Estou inserindo o "+bestCandIn);
+				sol.add(bestCandIn);
+				CL.remove(bestCandIn);
+			}
+			ObjFunction.evaluate(sol);
+		}
 		return null;
 	}
 
@@ -165,7 +183,7 @@ public class GRASP_QBF extends AbstractGRASP<Integer> {
 	public static void main(String[] args) throws IOException {
 
 		long startTime = System.currentTimeMillis();
-		GRASP_QBF grasp = new GRASP_QBF(0.05, 1000, "instances/qbf/qbf040");
+		GRASP_QBF grasp = new GRASP_QBF(0.5, 1000000, "instances/kqbf/kqbf040");
 		Solution<Integer> bestSol = grasp.solve();
 		System.out.println("maxVal = " + bestSol);
 		long endTime   = System.currentTimeMillis();
