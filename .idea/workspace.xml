@@ -1,11 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5065d9f2-dba4-42c4-89e3-ad702008ee00" name="Changes" comment="initial commit">
-      <change afterPath="$PROJECT_DIR$/src/problems/qbf/solvers/GRASP_KQBF.java" afterDir="false" />
+    <list default="true" id="5065d9f2-dba4-42c4-89e3-ad702008ee00" name="Changes" comment="ajustes do kqbf">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/qbf/solvers/GRASP_FirstImproving.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/qbf/solvers/GRASP_POP.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/qbf/solvers/GRASP_RPG.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/alpha2/GRASP_AlphaTwoTest1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/alpha2/GRASP_AlphaTwoTest2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/alpha2/GRASP_AlphaTwoTest3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/alpha2/GRASP_AlphaTwoTest4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/alpha2/GRASP_AlphaTwoTest5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/alpha2/GRASP_AlphaTwoTest6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/alpha2/GRASP_AlphaTwoTest7.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/base/GRASP_Test1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/base/GRASP_Test2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/base/GRASP_Test3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/base/GRASP_Test4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/base/GRASP_Test5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/base/GRASP_Test6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/base/GRASP_Test7.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/first/GRASP_FirstImprovingTest1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/first/GRASP_FirstImprovingTest2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/first/GRASP_FirstImprovingTest3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/first/GRASP_FirstImprovingTest4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/first/GRASP_FirstImprovingTest5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/first/GRASP_FirstImprovingTest6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/first/GRASP_FirstImprovingTest7.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/pop/GRASP_POPTest1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/pop/GRASP_POPTest2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/pop/GRASP_POPTest3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/pop/GRASP_POPTest4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/pop/GRASP_POPTest5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/pop/GRASP_POPTest6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/pop/GRASP_POPTest7.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/randompgreedy/GRASP_RPGTest1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/randompgreedy/GRASP_RPGTest2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/randompgreedy/GRASP_RPGTest3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/randompgreedy/GRASP_RPGTest4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/randompgreedy/GRASP_RPGTest5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/randompgreedy/GRASP_RPGTest6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tests/randompgreedy/GRASP_RPGTest7.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/Evaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/Evaluator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/qbf/QBF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/qbf/QBF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Ativ1/metaheuristics/grasp/AbstractGRASP.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/Ativ1/metaheuristics/grasp/AbstractGRASP.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Ativ1/problems/Evaluator.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/Ativ1/problems/Evaluator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Ativ1/problems/qbf/QBF.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/Ativ1/problems/qbf/QBF.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Ativ1/problems/qbf/solvers/GRASP_QBF.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/Ativ1/problems/qbf/solvers/GRASP_QBF.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/metaheuristics/grasp/AbstractGRASP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/metaheuristics/grasp/AbstractGRASP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/qbf/solvers/GRASP_QBF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/qbf/solvers/GRASP_QBF.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,16 +79,75 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Unicamp/mo824/atividade1/Ativ1/src/problems/tests/alpha2",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="QBF" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="problems.qbf.QBF" />
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Unicamp\mo824\atividade1\Ativ1\src\problems\tests\alpha2" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.GRASP_RPGTest2">
+    <configuration name="GRASP_AlphaTwoTest2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="problems.tests.alpha2.GRASP_AlphaTwoTest2" />
       <module name="Ativ1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="problems.qbf.*" />
+          <option name="PATTERN" value="problems.tests.alpha2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GRASP_POPTest2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="problems.tests.pop.GRASP_POPTest2" />
+      <module name="Ativ1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.tests.pop.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GRASP_RPGTest2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="problems.tests.randompgreedy.GRASP_RPGTest2" />
+      <module name="Ativ1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.tests.randompgreedy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GRASP_Test2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="problems.tests.base.GRASP_Test2" />
+      <module name="Ativ1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.tests.base.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="problems.tests.base.GRASP_Test1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="problems.tests.base.GRASP_Test1" />
+      <module name="Ativ1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.tests.base.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -56,7 +157,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.QBF" />
+        <item itemvalue="Application.GRASP_RPGTest2" />
+        <item itemvalue="Application.GRASP_POPTest2" />
+        <item itemvalue="Application.GRASP_AlphaTwoTest2" />
+        <item itemvalue="Application.problems.qbf.solvers.base.GRASP_Test2" />
+        <item itemvalue="Application.problems.tests.base.GRASP_Test1" />
       </list>
     </recent_temporary>
   </component>
@@ -76,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1710293146871</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ajustes do kqbf">
+      <created>1710295741892</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1710295741892</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -92,6 +204,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="ajustes do kqbf" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajustes do kqbf" />
   </component>
 </project>

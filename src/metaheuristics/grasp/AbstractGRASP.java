@@ -29,7 +29,7 @@ public abstract class AbstractGRASP<E> {
 	/**
 	 * a random number generator
 	 */
-	static Random rng = new Random(0);
+	public static Random rng = new Random(0);
 
 	/**
 	 * the objective function being optimized
@@ -64,7 +64,7 @@ public abstract class AbstractGRASP<E> {
 	/**
 	 * the number of iterations the GRASP main loop executes.
 	 */
-	protected Integer iterations;
+	protected Integer deltaTime;
 
 	/**
 	 * the Candidate List of elements to enter the solution.
@@ -126,13 +126,13 @@ public abstract class AbstractGRASP<E> {
 	 * @param alpha
 	 *            The GRASP greediness-randomness parameter (within the range
 	 *            [0,1])
-	 * @param iterations
-	 *            The number of iterations which the GRASP will be executed.
+	 * @param deltaTime
+	 *            The number of deltaTime which the GRASP will be executed.
 	 */
-	public AbstractGRASP(Evaluator<E> objFunction, Double alpha, Integer iterations) {
+	public AbstractGRASP(Evaluator<E> objFunction, Double alpha, Integer deltaTime) {
 		this.ObjFunction = objFunction;
 		this.alpha = alpha;
-		this.iterations = iterations;
+		this.deltaTime = deltaTime;
 	}
 	
 	/**
@@ -197,11 +197,11 @@ public abstract class AbstractGRASP<E> {
 	 * through the constructive heuristic and local search. The best solution is
 	 * returned as result.
 	 * 
-	 * @return The best feasible solution obtained throughout all iterations.
+	 * @return The best feasible solution obtained throughout all deltaTime.
 	 */
 	public Solution<E> solve() {
 		long startTime = System.currentTimeMillis();
-		long endTime = startTime + iterations;
+		long endTime = startTime + deltaTime;
 		
 		bestSol = createEmptySol();
 		for (int i = 0; true; i++) {
@@ -221,6 +221,7 @@ public abstract class AbstractGRASP<E> {
 						pesoTotal += pesos[valor];
 					}
 					System.out.println("(Iter. " + i + ") BestSol = " + bestSol);
+					System.out.println("Current time: " + ((System.currentTimeMillis()-startTime)/1000.0) + " sec");
 					System.out.println("Peso: "+pesoTotal);
 				}
 			}
@@ -236,7 +237,7 @@ public abstract class AbstractGRASP<E> {
 	 * @return true if the criteria is met.
 	 */
 	public Boolean constructiveStopCriteria() {
-		return (cost > sol.cost) ? false : true;
+		return CL.isEmpty();
 	}
 
 }

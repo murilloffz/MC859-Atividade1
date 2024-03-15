@@ -12,7 +12,7 @@ import solutions.Solution;
 /**
  * Metaheuristic GRASP (Greedy Randomized Adaptive Search Procedure) for
  * obtaining an optimal solution to a QBF (Quadractive Binary Function --
- * {@link #QuadracticBinaryFunction}). Since by default this GRASP considers
+ * ). Since by default this GRASP considers
  * minimization problems, an inverse QBF function is adopted.
  * 
  * @author ccavellucci, fusberti
@@ -26,7 +26,7 @@ public class GRASP_QBF extends AbstractGRASP<Integer> {
 	 * @param alpha
 	 *            The GRASP greediness-randomness parameter (within the range
 	 *            [0,1])
-	 * @param iterations
+	 * @param time
 	 *            The number of iterations which the GRASP will be executed.
 	 * @param filename
 	 *            Name of the file for which the objective function parameters
@@ -34,8 +34,8 @@ public class GRASP_QBF extends AbstractGRASP<Integer> {
 	 * @throws IOException
 	 *             necessary for I/O operations.
 	 */
-	public GRASP_QBF(Double alpha, Integer iterations, String filename) throws IOException {
-		super(new QBF_Inverse(filename), alpha, iterations);
+	public GRASP_QBF(Double alpha, Integer time, String filename) throws IOException {
+		super(new QBF_Inverse(filename), alpha, time);
 	}
 
 	/*
@@ -240,7 +240,7 @@ public class GRASP_QBF extends AbstractGRASP<Integer> {
 	public static void main(String[] args) throws IOException {
 
 		long startTime = System.currentTimeMillis();
-		GRASP_QBF grasp = new GRASP_QBF(0.5, 1000000, "instances/kqbf/kqbf040");
+		GRASP_QBF grasp = new GRASP_QBF(0.2, 1800000, "instances/kqbf/kqbf040");
 		Solution<Integer> bestSol = grasp.solve();
 		System.out.println("maxVal = " + bestSol);
 		long endTime   = System.currentTimeMillis();
