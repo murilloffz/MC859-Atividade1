@@ -98,8 +98,7 @@ public class GRASP_RPG extends AbstractGRASP<Integer> {
                     RCL.clear();
                 }
             }
-
-
+            currentStep++;
 
             /* Choose a candidate randomly from the RCL */
             if(RCL.size() > 0) {
