@@ -71,7 +71,7 @@ public class GRASP_RPG extends AbstractGRASP<Integer> {
              * Add all CL elements to RCL and choose one randomly if on a random step
              * Else it takes the pure greedy approach
              */
-            if (currentStep < randomSteps){
+            if (currentStep < (int) Math.floor(ObjFunction.getDomainSize()*0.1)){
                 RCL.addAll(CL);
                 if(RCL.size() > 0) {
                     int rndIndex = rng.nextInt(RCL.size());
